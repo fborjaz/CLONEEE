@@ -31,7 +31,7 @@ def get_gmail_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file("delete_email/credentials.json", SCOPES)
-            creds = flow.run_local_server(port=0)
+            creds = flow.run_local_server(port=0, prompt='consent', authorization_prompt_message='', success_message="Authentication successful! Redirecting...")  
         with open("delete_email/token.json", "w") as token:
             token.write(creds.to_json())
 
